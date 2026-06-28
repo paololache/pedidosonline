@@ -7,7 +7,7 @@ import Admin from './pages/Admin';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/pedidosonline">
       <Toaster
         position="top-center"
         toastOptions={{
