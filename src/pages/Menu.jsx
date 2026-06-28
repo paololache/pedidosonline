@@ -21,10 +21,10 @@ const SAMPLE_PRODUCTS = [
   { id: '10', name: 'Spaghetti Bolognese', description: 'Spaghetti con salsa bolognese casera y parmesano', price: 20.00, category: 'Pastas', image_url: `${IMG}/photo-1551892374-ecf8754cf8b0?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 16 },
   { id: '11', name: 'Coca-Cola 500ml', description: 'Bebida refrescante', price: 5.00, category: 'Bebidas', image_url: `${IMG}/photo-1554866585-cd94860890b7?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 20 },
   { id: '12', name: 'Inca Kola 500ml', description: 'Bebida refrescante', price: 5.00, category: 'Bebidas', image_url: `${IMG}/photo-1619317202838-86019e975e1b?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 21 },
-  { id: '13', name: 'Agua San Luis 500ml', description: 'Agua mineral sin gas', price: 3.50, category: 'Bebidas', image_url: `${IMG}/photo-1564419323312-bb2a6f86c6d5?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 22 },
+  { id: '13', name: 'Agua San Luis 500ml', description: 'Agua mineral sin gas', price: 3.50, category: 'Bebidas', image_url: `${IMG}/photo-1523362628745-0c100150b504?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 22 },
   { id: '14', name: 'Cheesecake New York', description: 'Tarta de queso con salsa de maracuyá', price: 12.00, category: 'Postres', image_url: `${IMG}/photo-1533134242443-d4fd215305ad?w=400&h=400&fit=crop`, is_available: true, is_featured: false, sort_order: 25 },
-  { id: '15', name: 'Combo Pizza + Gaseosa', description: '1 Pizza Personal + 1 Gaseosa 500ml a elección', price: 28.00, category: 'Combos', image_url: `${IMG}/photo-1552539614-7ef6e6e4586e?w=400&h=400&fit=crop`, is_available: true, is_featured: true, sort_order: 30 },
-  { id: '16', name: 'Combo Familiar + 2 Gaseosas', description: '1 Pizza Familiar + 2 Gaseosas 500ml', price: 48.00, category: 'Combos', image_url: `${IMG}/photo-1561758033-d89a9ad46330?w=400&h=400&fit=crop`, is_available: true, is_featured: true, sort_order: 31 },
+  { id: '15', name: 'Combo Pizza + Gaseosa', description: '1 Pizza Personal + 1 Gaseosa 500ml a elección', price: 28.00, category: 'Combos', image_url: `${IMG}/photo-1680036523788-2cecb8d100da?w=400&h=400&fit=crop`, is_available: true, is_featured: true, sort_order: 30 },
+  { id: '16', name: 'Combo Familiar + 2 Gaseosas', description: '1 Pizza Familiar + 2 Gaseosas 500ml', price: 48.00, category: 'Combos', image_url: `${IMG}/photo-1769521140317-5c6dcd1266e7?w=400&h=400&fit=crop`, is_available: true, is_featured: true, sort_order: 31 },
 ];
 
 const BUSINESS_CONFIG = {
