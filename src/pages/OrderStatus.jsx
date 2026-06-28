@@ -5,7 +5,7 @@ import { formatPEN } from '../lib/formatters';
 
 // Demo order for UI testing
 const DEMO_ORDER = {
-  orderNumber: 'TAR-1506AB',
+  orderNumber: 'PZA-1506AB',
   customerName: 'Juan Pérez',
   items: [
     { product: { name: 'Lomo Saltado', price: 28.00 }, quantity: 2 },

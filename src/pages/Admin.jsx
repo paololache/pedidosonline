@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { formatPEN } from '../lib/formatters';
 
 const DEMO_ORDERS = [
-  { id: '1', orderNumber: 'TAR-1506AB', customer_name: 'Juan Pérez', total: 61.00, payment_method: 'culqi', payment_status: 'paid', order_status: 'preparando', created_at: new Date().toISOString() },
-  { id: '2', orderNumber: 'TAR-1506AC', customer_name: 'María García', total: 32.00, payment_method: 'yape', payment_status: 'paid', order_status: 'nuevo', created_at: new Date().toISOString() },
-  { id: '3', orderNumber: 'TAR-1506AD', customer_name: 'Carlos López', total: 85.00, payment_method: 'efectivo', payment_status: 'pending', order_status: 'confirmado', created_at: new Date().toISOString() },
+  { id: '1', orderNumber: 'PZA-1506AB', customer_name: 'Juan Pérez', total: 46.00, payment_method: 'culqi', payment_status: 'paid', order_status: 'preparando', created_at: new Date().toISOString() },
+  { id: '2', orderNumber: 'PZA-1506AC', customer_name: 'María García', total: 28.00, payment_method: 'yape', payment_status: 'paid', order_status: 'nuevo', created_at: new Date().toISOString() },
+  { id: '3', orderNumber: 'PZA-1506AD', customer_name: 'Carlos López', total: 48.00, payment_method: 'efectivo', payment_status: 'pending', order_status: 'confirmado', created_at: new Date().toISOString() },
 ];
 
 const STATUSES = ['nuevo', 'confirmado', 'preparando', 'listo', 'entregado', 'cancelado'];

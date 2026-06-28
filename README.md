@@ -1,16 +1,50 @@
-# React + Vite
+# Pizza Express Tarapoto 🍕 — Pedidos Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Plataforma de pedidos online para pizzería. Cliente puede navegar el menú, agregar al carrito, elegir método de pago y recibir confirmación por WhatsApp.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React + Vite + Tailwind CSS
+- **Estado:** Zustand con persistencia en localStorage
+- **Backend:** Node.js + Express (pendiente de implementar)
+- **Base de datos:** Supabase (PostgreSQL) — pendiente de conectar
+- **Pagos:** Culqi / Yape / Efectivo
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev      # desarrollo
+npm run build    # producción
+npm run preview  # previsualizar build
+```
 
-## Expanding the Oxlint configuration
+## Variables de entorno
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Copiar `.env.example` a `.env` y completar:
+
+```
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_APP_NAME=Pizza Express Tarapoto
+VITE_WHATSAPP_NUMBER=51987654321
+```
+
+## Estructura
+
+```
+src/
+├── components/     # UI reutilizable (Navbar, Cart, ProductCard, etc.)
+├── pages/          # Menu, Checkout, OrderStatus, Admin
+├── store/          # Zustand store del carrito
+└── lib/            # Helpers (formatters, whatsapp, culqi, supabase)
+```
+
+## Personalizar
+
+Editar `BUSINESS_CONFIG` en `src/pages/Menu.jsx`:
+- Nombre del negocio
+- Número de WhatsApp
+- Precio de delivery
+- Pedido mínimo
+- Color primario
+- Horario y dirección

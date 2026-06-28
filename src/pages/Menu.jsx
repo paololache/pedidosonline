@@ -1,33 +1,38 @@
 import { useState, useMemo } from 'react';
-import toast from 'react-hot-toast';
 import Navbar from '../components/Navbar';
 import CategoryFilter from '../components/CategoryFilter';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 import Cart from '../components/Cart';
 import useCartStore from '../store/cartStore';
-import { formatPEN, formatPhone } from '../lib/formatters';
 
 const SAMPLE_PRODUCTS = [
-  { id: '1', name: 'Lomo Saltado', description: 'Lomo fino salteado con cebolla, tomate y papas fritas', price: 28.00, category: 'Segundos', image_url: null, is_available: true, is_featured: true, sort_order: 1 },
-  { id: '2', name: 'Ceviche Mixto', description: 'Pescado y mariscos en leche de tigre, choclo y cancha', price: 32.00, category: 'Entradas', image_url: null, is_available: true, is_featured: true, sort_order: 2 },
-  { id: '3', name: 'Pollo a la Brasa 1/4', description: 'Con papas fritas y ensalada fresca', price: 22.00, category: 'Segundos', image_url: null, is_available: true, is_featured: false, sort_order: 3 },
-  { id: '4', name: 'Juane de Gallina', description: 'Arroz con gallina criolla envuelto en hoja de bijao', price: 18.00, category: 'Platos regionales', image_url: null, is_available: true, is_featured: true, sort_order: 4 },
-  { id: '5', name: 'Tacacho con Cecina', description: 'Tacacho de plátano verde con cecina ahumada', price: 20.00, category: 'Platos regionales', image_url: null, is_available: true, is_featured: false, sort_order: 5 },
-  { id: '6', name: 'Inca Kola 500ml', description: 'Bebida refrescante', price: 5.00, category: 'Bebidas', image_url: null, is_available: true, is_featured: false, sort_order: 10 },
-  { id: '7', name: 'Chicha Morada', description: 'Preparada en casa con frutas naturales', price: 6.00, category: 'Bebidas', image_url: null, is_available: true, is_featured: false, sort_order: 11 },
-  { id: '8', name: 'Mazamorra Morada', description: 'Postre tradicional peruano', price: 8.00, category: 'Postres', image_url: null, is_available: true, is_featured: false, sort_order: 20 },
-  { id: '9', name: 'Combo Familiar', description: '2 Pollos a la brasa + 4 gaseosas + 2 porciones de papas', price: 85.00, category: 'Combos', image_url: null, is_available: true, is_featured: true, sort_order: 30 },
+  { id: '1', name: 'Pizza Margherita Personal', description: 'Queso mozzarella, salsa de tomate, albahaca fresca', price: 22.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: true, sort_order: 1 },
+  { id: '2', name: 'Pizza Pepperoni Personal', description: 'Pepperoni, queso mozzarella, salsa clásica', price: 25.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: true, sort_order: 2 },
+  { id: '3', name: 'Pizza Suprema Personal', description: 'Pepperoni, champiñones, pimiento, cebolla, aceitunas', price: 28.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: false, sort_order: 3 },
+  { id: '4', name: 'Pizza Margherita Familiar', description: '40cm. Queso mozzarella, salsa de tomate, albahaca', price: 38.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: false, sort_order: 4 },
+  { id: '5', name: 'Pizza Pepperoni Familiar', description: '40cm. Pepperoni, queso mozzarella, salsa clásica', price: 42.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: false, sort_order: 5 },
+  { id: '6', name: 'Pizza Suprema Familiar', description: '40cm. Pepperoni, champiñones, pimiento, cebolla, aceitunas', price: 46.00, category: 'Pizzas', image_url: null, is_available: true, is_featured: true, sort_order: 6 },
+  { id: '7', name: 'Alitas de Pollo BBQ', description: '6 alitas bañadas en salsa BBQ ahumada', price: 18.00, category: 'Entradas', image_url: null, is_available: true, is_featured: false, sort_order: 10 },
+  { id: '8', name: 'Pan de Ajo', description: 'Pan artesanal con mantequilla de ajo y hierbas', price: 10.00, category: 'Entradas', image_url: null, is_available: true, is_featured: false, sort_order: 11 },
+  { id: '9', name: 'Lasagna Clásica', description: 'Capas de pasta, carne molida, salsa bechamel y queso gratinado', price: 24.00, category: 'Pastas', image_url: null, is_available: true, is_featured: true, sort_order: 15 },
+  { id: '10', name: 'Spaghetti Bolognese', description: 'Spaghetti con salsa bolognese casera y parmesano', price: 20.00, category: 'Pastas', image_url: null, is_available: true, is_featured: false, sort_order: 16 },
+  { id: '11', name: 'Coca-Cola 500ml', description: 'Bebida refrescante', price: 5.00, category: 'Bebidas', image_url: null, is_available: true, is_featured: false, sort_order: 20 },
+  { id: '12', name: 'Inca Kola 500ml', description: 'Bebida refrescante', price: 5.00, category: 'Bebidas', image_url: null, is_available: true, is_featured: false, sort_order: 21 },
+  { id: '13', name: 'Agua San Luis 500ml', description: 'Agua mineral sin gas', price: 3.50, category: 'Bebidas', image_url: null, is_available: true, is_featured: false, sort_order: 22 },
+  { id: '14', name: 'Cheesecake New York', description: 'Tarta de queso con salsa de maracuyá', price: 12.00, category: 'Postres', image_url: null, is_available: true, is_featured: false, sort_order: 25 },
+  { id: '15', name: 'Combo Pizza + Gaseosa', description: '1 Pizza Personal + 1 Gaseosa 500ml a elección', price: 28.00, category: 'Combos', image_url: null, is_available: true, is_featured: true, sort_order: 30 },
+  { id: '16', name: 'Combo Familiar + 2 Gaseosas', description: '1 Pizza Familiar + 2 Gaseosas 500ml', price: 48.00, category: 'Combos', image_url: null, is_available: true, is_featured: true, sort_order: 31 },
 ];
 
 const BUSINESS_CONFIG = {
-  business_name: 'Mi Restaurante',
+  business_name: 'Pizza Express Tarapoto',
   whatsapp_number: '51987654321',
   delivery_fee: '5.00',
-  min_order: '20.00',
+  min_order: '15.00',
   primary_color: '#E63946',
-  schedule: 'Lun–Sáb 12pm–10pm',
-  address: 'Tarapoto, San Martín',
+  schedule: 'Lun–Dom 6pm–11pm',
+  address: 'Jr. San Martín 452, Tarapoto',
 };
 
 export default function Menu() {
@@ -55,7 +60,6 @@ export default function Menu() {
     <div className="min-h-screen bg-gray-50">
       <Navbar businessName={BUSINESS_CONFIG.business_name} onCartOpen={() => setCartOpen(true)} />
 
-      {/* Hero */}
       <div className="relative h-44 bg-gradient-to-br overflow-hidden" style={{ backgroundColor: 'var(--primary)' }}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white" />
@@ -68,7 +72,6 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* Categories */}
       <div className="sticky top-16 z-30 bg-white border-b border-gray-100">
         <CategoryFilter
           categories={categories}
@@ -77,7 +80,6 @@ export default function Menu() {
         />
       </div>
 
-      {/* Products Grid */}
       <div className="max-w-4xl mx-auto px-4 py-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {filteredProducts.map((product) => (
@@ -90,13 +92,11 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* Product Detail Modal */}
       <ProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
 
-      {/* Cart Sidebar */}
       <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );
