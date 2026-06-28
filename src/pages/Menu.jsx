@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import CategoryFilter from '../components/CategoryFilter';
 import ProductCard from '../components/ProductCard';
@@ -43,7 +43,7 @@ export default function Menu() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const setBusinessConfig = useCartStore((s) => s.setBusinessConfig);
 
-  useState(() => {
+  useEffect(() => {
     setBusinessConfig(BUSINESS_CONFIG);
     document.documentElement.style.setProperty('--primary', BUSINESS_CONFIG.primary_color);
   }, []);
