@@ -1,4 +1,4 @@
-# Pizza Express Tarapoto 🍕 — Pedidos Online
+# Pizza Aldo 🍕 — Pedidos Online
 
 Plataforma de pedidos online para pizzería. Cliente puede navegar el menú, agregar al carrito, elegir método de pago y recibir confirmación por WhatsApp.
 
